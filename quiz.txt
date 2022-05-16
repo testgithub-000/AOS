@@ -1,0 +1,312 @@
+main 
+
+
+
+
+package com.abhi.quiz;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    TextView ta1,ta2,ta3;
+    RadioButton r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12;
+    RadioGroup rg1,rg2,rg3;
+    Button b1;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ta1=findViewById(R.id.t1);
+        ta2=findViewById(R.id.t2);
+        ta3=findViewById(R.id.t3);
+        r1=findViewById(R.id.radioButton1);
+        r2=findViewById(R.id.radioButton2);
+        r3=findViewById(R.id.radioButton3);
+        r4=findViewById(R.id.radioButton4);
+        r5=findViewById(R.id.radioButton5);
+        r6=findViewById(R.id.radioButton6);
+        r7=findViewById(R.id.radioButton7);
+        r8=findViewById(R.id.radioButton8);
+        r9=findViewById(R.id.radioButton9);
+        r10=findViewById(R.id.radioButton10);
+        r11=findViewById(R.id.radioButton11);
+        r12=findViewById(R.id.radioButton12);
+        rg1=findViewById(R.id.radioGroup1);
+        rg2=findViewById(R.id.radioGroup2);
+        rg3=findViewById(R.id.radioGroup3);
+        b1=findViewById(R.id.n1);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            int count=0;
+            @Override
+            public void onClick(View arg0) {
+
+                if(r1.isChecked()){
+                    count=count+1;
+                }
+                if(r6.isChecked()){
+                    count=count+1;
+                }
+                if(r10.isChecked()) {
+                    count = count + 1;
+                }
+                Intent intent = new Intent(getApplicationContext(), Next1.class);
+                intent.putExtra("c1",count);
+                startActivity(intent);
+                //intent.putExtra("c1", count);
+                /* Toast toast = Toast.makeText(getApplicationContext()," Your Score is : "+count+" ",Toast.LENGTH_LONG);
+                 toast.show();*/
+
+            }
+        });
+    }
+}
+
+
+next 1
+
+
+
+
+
+
+package com.abhi.quiz;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class Next1 extends AppCompatActivity {
+    TextView ta1,ta2,ta3;
+    RadioButton r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12;
+    RadioGroup rg1,rg2,rg3;
+    Button b1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_next1);
+        ta1=findViewById(R.id.t21);
+        ta2=findViewById(R.id.t31);
+        ta3=findViewById(R.id.t41);
+        r1=findViewById(R.id.radioButton21);
+        r2=findViewById(R.id.radioButton22);
+        r3=findViewById(R.id.radioButton23);
+        r4=findViewById(R.id.radioButton24);
+        r5=findViewById(R.id.radioButton25);
+        r6=findViewById(R.id.radioButton26);
+        r7=findViewById(R.id.radioButton27);
+        r8=findViewById(R.id.radioButton28);
+        r9=findViewById(R.id.radioButton29);
+        r10=findViewById(R.id.radioButton30);
+        r11=findViewById(R.id.radioButton31);
+        r12=findViewById(R.id.radioButton32);
+        rg1=findViewById(R.id.radioGroup11);
+        rg2=findViewById(R.id.radioGroup12);
+        rg3=findViewById(R.id.radioGroup13);
+        b1=findViewById(R.id.n2);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            Intent intent = getIntent();
+            int count=intent.getExtras().getInt("c1");
+            @Override
+            public void onClick(View view) {
+
+                if(r1.isChecked()){
+                    count=count+1;
+                }
+                if(r8.isChecked()){
+                    count=count+1;
+                }
+                if(r11.isChecked()){
+                    count=count+1;
+                }
+
+                Toast toast = Toast.makeText(getApplicationContext()," Your Score is : "+count+" ",Toast.LENGTH_LONG);
+                toast.show();
+            }
+        });
+    }
+}
+
+
+
+
+
+main xml
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+-<ScrollView android:layout_height="fill_parent" android:layout_width="fill_parent" tools:context=".MainActivity" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+-<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/wall2" android:orientation="vertical">
+-
+
+-<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="horizontal">
+
+<TextView android:layout_height="wrap_content" android:layout_width="316dp" android:id="@+id/t1" android:text="Q1 Who is a HOD OF MCS ?" android:textSize="20sp" android:textStyle="bold"> </TextView>
+
+</LinearLayout>
+-
+
+-<RadioGroup android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioGroup1">
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton1" android:text="Nimkar Sir " android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton2" android:text="Arvind Sir " android:textSize="20sp" android:textStyle="bold"> </RadioButton>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton3" android:text="Poonam ma'am" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton4" android:text="Abhyankar Sir " android:textSize="20sp" android:textStyle="bold"/>
+
+</RadioGroup>
+-
+
+-<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="horizontal">
+
+<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/t2" android:text="Q2 Who is teaching MT ?" android:textSize="20sp" android:textStyle="bold"> </TextView>
+
+</LinearLayout>
+-
+
+-<RadioGroup android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioGroup2">
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton5" android:text="Yogini Ma'am" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton6" android:text="Rashmi Ma'am " android:textSize="20sp" android:textStyle="bold"> </RadioButton>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton7" android:text="Nimkar Sir" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton8" android:text="Mayuri Ma'am" android:textSize="20sp" android:textStyle="bold"/>
+
+</RadioGroup>
+-
+
+-<LinearLayout android:layout_height="52dp" android:layout_width="match_parent" android:orientation="horizontal">
+
+<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/t3" android:text="Q3 Where NWC Located?" android:textSize="20sp" android:textStyle="bold"> </TextView>
+
+</LinearLayout>
+-
+
+-<RadioGroup android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioGroup3">
+
+<RadioButton android:layout_height="36dp" android:layout_width="302dp" android:id="@+id/radioButton9" android:text="Mumbai" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="36dp" android:layout_width="305dp" android:id="@+id/radioButton10" android:text="Pune" android:textSize="20sp" android:textStyle="bold"> </RadioButton>
+
+<RadioButton android:layout_height="37dp" android:layout_width="match_parent" android:id="@+id/radioButton11" android:text="Delhi" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="37dp" android:layout_width="match_parent" android:id="@+id/radioButton12" android:text="Jaipur" android:textSize="20sp" android:textStyle="bold"/>
+
+</RadioGroup>
+
+<Button android:layout_height="wrap_content" android:layout_width="118dp" android:id="@+id/n1" android:text="Next" android:textSize="20sp" android:textStyle="bold" android:textColor="@color/white"> </Button>
+
+</LinearLayout>
+
+</ScrollView>
+
+
+
+
+
+next 1 xml
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+-<ScrollView android:layout_height="fill_parent" android:layout_width="fill_parent" tools:context=".MainActivity" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+-<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/wall2" android:orientation="vertical">
+-
+
+-<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="horizontal">
+
+<TextView android:layout_height="wrap_content" android:layout_width="316dp" android:id="@+id/t21" android:text="Q4 Which company's Phone Abhishek Is Using ?" android:textSize="20sp" android:textStyle="bold"> </TextView>
+
+</LinearLayout>
+-
+
+-<RadioGroup android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioGroup11">
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton21" android:text="Apple" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton22" android:text="Samsung" android:textSize="20sp" android:textStyle="bold"> </RadioButton>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton23" android:text="MI" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton24" android:text="ONEPLUS" android:textSize="20sp" android:textStyle="bold"/>
+
+</RadioGroup>
+-
+
+-<LinearLayout android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="horizontal">
+
+<TextView android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/t31" android:text="Q5 Suraj Come to college by which train ?" android:textSize="20sp" android:textStyle="bold"> </TextView>
+
+</LinearLayout>
+-
+
+-<RadioGroup android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioGroup12">
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton25" android:text="Stara" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton26" android:text="Daund" android:textSize="20sp" android:textStyle="bold"> </RadioButton>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton27" android:text="Mumbai" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton28" android:text="Lonavala" android:textSize="20sp" android:textStyle="bold"/>
+
+</RadioGroup>
+-
+
+-<LinearLayout android:layout_height="52dp" android:layout_width="match_parent" android:orientation="horizontal">
+
+<TextView android:layout_height="match_parent" android:layout_width="337dp" android:id="@+id/t41" android:text="Q6 Poonam Ma'am Teaches In Which Field " android:textSize="20sp" android:textStyle="bold"> </TextView>
+
+</LinearLayout>
+-
+
+-<RadioGroup android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioGroup13">
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton29" android:text="Marine" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton30" android:text="Civil" android:textSize="20sp" android:textStyle="bold"> </RadioButton>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton31" android:text="CS" android:textSize="20sp" android:textStyle="bold"/>
+
+<RadioButton android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/radioButton32" android:text="Mechanical" android:textSize="20sp" android:textStyle="bold"/>
+
+</RadioGroup>
+
+<Button android:layout_height="wrap_content" android:layout_width="118dp" android:id="@+id/n2" android:text="Submit" android:textSize="20sp" android:textStyle="bold" android:textColor="@color/white"> </Button>
+
+</LinearLayout>
+
+</ScrollView>

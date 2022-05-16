@@ -1,0 +1,56 @@
+package com.abhi.ass45;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class
+MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main,menu);
+        //setTitle("SELECT A PRODUCT");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case R.id.mob:
+                Toast.makeText(this,"You have selected Mobile",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.lp:
+                Toast.makeText(this,"You have selected Laptop",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.comp:
+                Toast.makeText(this,"You have selected Computer",Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+}
+
+
+
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout tools:context=".MainActivity" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/activity_main" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"> </RelativeLayout>

@@ -1,0 +1,96 @@
+package com.abhi.ass46;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView lv1;
+    EditText inp;
+    Button ins,del,search;
+    ArrayList <String> itms = new ArrayList<String>();
+    ArrayAdapter myadap;
+    String item;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        lv1 = findViewById(R.id.lvs);
+        inp = findViewById(R.id.it);
+        ins = findViewById(R.id.ins);
+        del = findViewById(R.id.de);
+        search = findViewById(R.id.se);
+        myadap = new ArrayAdapter(this, android.R.layout.simple_list_item_1,itms);
+        lv1.setAdapter(myadap);
+        ins.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                item = inp.getText().toString();
+                itms.add(item);
+                Toast.makeText(MainActivity.this, "Inserted "+item, Toast.LENGTH_SHORT).show();
+            }
+        });
+        del.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                item = inp.getText().toString();
+                itms.remove(item);
+                Toast.makeText(MainActivity.this, "Deleted "+item, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                item = inp.getText().toString();
+                Integer k =itms.indexOf(item);
+                if(k == -1)
+                {
+                    Toast.makeText(MainActivity.this, "Not Found "+item, Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this, "Found "+k, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
+}
+
+
+
+
+
+<?xml version="1.0"?>
+
+-<RelativeLayout tools:context=".MainActivity" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+<EditText android:layout_height="60dp" android:layout_width="300dp" android:layout_marginTop="20dp" android:textSize="22dp" android:hint="Enter Item Here" android:layout_centerHorizontal="true" android:id="@+id/it"/>
+
+<Button android:layout_height="70dp" android:layout_width="300dp" android:layout_marginTop="20dp" android:textSize="20dp" android:layout_centerHorizontal="true" android:id="@+id/ins" android:layout_below="@id/it" android:text="Insert"/>
+
+<Button android:layout_height="70dp" android:layout_width="300dp" android:layout_marginTop="20dp" android:textSize="20dp" android:layout_centerHorizontal="true" android:id="@+id/de" android:layout_below="@id/ins" android:text="Delete"/>
+
+<Button android:layout_height="70dp" android:layout_width="300dp" android:layout_marginTop="20dp" android:textSize="20dp" android:layout_centerHorizontal="true" android:id="@+id/se" android:layout_below="@id/de" android:text="Search"/>
+
+<ListView android:layout_height="wrap_content" android:layout_width="300dp" android:layout_marginTop="20dp" android:layout_centerHorizontal="true" android:id="@+id/lvs" android:layout_below="@id/se"/>
+
+</RelativeLayout>
+
+

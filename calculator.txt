@@ -1,0 +1,178 @@
+package com.abhi.calculator;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText e1, e2;
+    TextView t1;
+    int num1, num2;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    // a public method to get the input numbers
+    public boolean getNumbers() {
+
+        // defining the edit text 1 to e1
+        e1 = (EditText) findViewById(R.id.num1);
+
+        // defining the edit text 2 to e2
+        e2 = (EditText) findViewById(R.id.num2);
+
+        // defining the text view to t1
+        t1 = (TextView) findViewById(R.id.result);
+
+        // taking input from text box 1
+        String s1 = e1.getText().toString();
+
+        // taking input from text box 2
+        String s2 = e2.getText().toString();
+
+        // condition to check if box is not empty
+        if ((s1.equals(null) && s2.equals(null))
+                || (s1.equals("") && s2.equals(""))) {
+
+            String result = "Please enter a value";
+            t1.setText(result);
+
+            return false;
+        } else {
+            // converting string to int.
+            num1 = Integer.parseInt(s1);
+
+            // converting string to int.
+            num2 = Integer.parseInt(s2);
+        }
+
+        return true;
+    }
+
+    // a public method to perform addition
+    public void doSum(View v) {
+
+        // get the input numbers
+        if (getNumbers()) {
+            int sum = num1 + num2;
+            t1.setText(Integer.toString(sum));
+        }
+    }
+
+    // a public method to perform power function
+    public void doPow(View v) {
+
+        // get the input numbers
+        if (getNumbers()) {
+            double sum = Math.pow(num1, num2);
+            t1.setText(Double.toString(sum));
+        }
+    }
+
+    // a public method to perform subtraction
+    public void doSub(View v) {
+
+        // get the input numbers
+        if (getNumbers()) {
+            int sum = num1 - num2;
+            t1.setText(Integer.toString(sum));
+        }
+    }
+
+    // a public method to perform multiplication
+    public void doMul(View v) {
+
+        // get the input numbers
+        if (getNumbers()) {
+            int sum = num1 * num2;
+            t1.setText(Integer.toString(sum));
+        }
+    }
+
+    // a public method to perform Division
+    public void doDiv(View v) {
+
+        // get the input numbers
+        if (getNumbers()) {
+
+            // displaying the text in text view assigned as t1
+            double sum = num1 / (num2 * 1.0);
+            t1.setText(Double.toString(sum));
+        }
+    }
+
+    // a public method to perform modulus function
+    public void doMod(View v) {
+
+        // get the input numbers
+        if (getNumbers()) {
+            double sum = num1 % num2;
+            t1.setText(Double.toString(sum));
+        }
+    }
+}
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+-<androidx.constraintlayout.widget.ConstraintLayout tools:context=".MainActivity" android:background="@drawable/wall2" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Text View to display our basic heading of "calculator"-->
+
+
+<TextView android:layout_height="43dp" android:layout_width="194dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="30dp" android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:text=" Calculator" android:scrollbarSize="30dp" android:layout_marginBottom="502dp" android:layout_marginRight="103dp" android:layout_marginEnd="103dp" android:layout_marginTop="58dp" android:layout_marginLeft="114dp" android:layout_marginStart="114dp" android:textStyle="bold"/>
+
+<!-- Edit Text View to input the values -->
+
+
+<EditText android:background="@color/white" android:layout_height="28dp" android:layout_width="364dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="416dp" android:layout_marginEnd="71dp" android:layout_marginTop="70dp" android:layout_marginStart="72dp" android:inputType="number" android:hint="Number1(0)" android:ems="10" android:id="@+id/num1"/>
+
+<!-- Edit Text View to input 2nd value-->
+
+
+<EditText android:background="@android:color/white" android:layout_height="30dp" android:layout_width="363dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="374dp" android:layout_marginEnd="71dp" android:layout_marginTop="112dp" android:layout_marginStart="72dp" android:inputType="number" android:hint="number2(0)" android:ems="10" android:id="@+id/num2"/>
+
+<!-- Text View to display result -->
+
+
+<TextView android:background="@android:color/white" android:layout_height="71dp" android:layout_width="356dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:textSize="25sp" android:text="result" android:layout_marginBottom="287dp" android:layout_marginEnd="48dp" android:layout_marginTop="151dp" android:layout_marginStart="41dp" android:id="@+id/result" android:textColorLink="#673AB7"/>
+
+<!-- A button to perform 'sum' operation -->
+
+
+<Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="+" android:layout_marginBottom="263dp" android:layout_marginEnd="307dp" android:layout_marginTop="292dp" android:layout_marginStart="16dp" android:id="@+id/sum" android:onClick="doSum" android:backgroundTint="@android:color/holo_red_light"/>
+
+<!-- A button to perform subtraction operation. -->
+
+
+<Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="-" android:layout_marginBottom="263dp" android:layout_marginEnd="113dp" android:layout_marginTop="292dp" android:layout_marginStart="210dp" android:id="@+id/sub" android:onClick="doSub" android:backgroundTint="@android:color/holo_red_light"/>
+
+<!-- A button to perform division. -->
+
+
+<Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="/" android:layout_marginBottom="263dp" android:layout_marginEnd="16dp" android:layout_marginTop="292dp" android:layout_marginStart="307dp" android:id="@+id/div" android:onClick="doDiv" android:backgroundTint="@android:color/holo_red_light" app:layout_constraintHorizontal_bias="0.0"/>
+
+<!-- A button to perform multiplication. -->
+
+
+<Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="x" android:layout_marginBottom="199dp" android:layout_marginEnd="307dp" android:layout_marginTop="356dp" android:layout_marginStart="16dp" android:id="@+id/mul" android:onClick="doMul" android:backgroundTint="@android:color/holo_red_light"/>
+
+<!-- A button to perform a modulus function. -->
+
+
+<Button android:layout_height="48dp" android:layout_width="92dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="%(mod)" android:layout_marginBottom="199dp" android:layout_marginEnd="206dp" android:layout_marginTop="356dp" android:layout_marginStart="113dp" android:id="@+id/button" android:onClick="doMod" android:backgroundTint="@android:color/holo_red_light"/>
+
+<!-- A button to perform a power function. -->
+
+
+<Button android:layout_height="wrap_content" android:layout_width="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:text="n1^n2" android:layout_marginBottom="263dp" android:layout_marginEnd="210dp" android:layout_marginTop="292dp" android:layout_marginStart="113dp" android:id="@+id/pow" android:onClick="doPow" android:backgroundTint="@android:color/holo_red_light"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
