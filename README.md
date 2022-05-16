@@ -1,2 +1,1 @@
-# AOS
-AOS assignment
+Android assignment 
